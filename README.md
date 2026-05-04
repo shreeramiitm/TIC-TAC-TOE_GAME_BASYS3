@@ -114,3 +114,46 @@ It demonstrates real-time graphics rendering, hardware-based game logic, and use
 ---
 
 ## 📁 Project Structure
+├── gameLogic.v        # Top module
+├── Cell.v             # Cell FSM
+├── gameState.v        # Win detection
+├── videoElements.v    # VGA rendering
+├── vga_sync.v         # VGA timing
+├── constraints.xdc    # Pin configuration
+├── tb_gameLogic.v     # Testbench
+
+
+---
+
+## ⚙️ How to Run
+
+1. Open project in **Vivado**
+2. Add all Verilog files
+3. Add `.xdc` constraint file
+4. Run:
+   - Synthesis  
+   - Implementation  
+   - Generate Bitstream  
+5. Program FPGA using USB
+6. Connect VGA monitor
+7. Play using switches 🎮  
+
+---
+
+## 🔮 Future Improvements
+
+- 🤖 AI opponent (Minimax Algorithm)
+- 🔢 Score display using 7-segment
+- ✨ Animation effects
+- 🎵 Sound feedback
+
+---
+
+## 🙏 Acknowledgment
+
+Special thanks to faculty guidance and support during this project development.
+
+---
+
+## 🔗 GitHub Repository
+👉 https://github.com/shreeramiitm/TIC-TAC-TOE_GAME_BASYS3
