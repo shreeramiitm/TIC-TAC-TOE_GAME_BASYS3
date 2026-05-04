@@ -1,0 +1,62 @@
+`timescale 1ns / 1ps
+
+module tb_gameLogic();
+
+    // Inputs to the module (registers)
+    reg clk;
+    reg [8:0] In;
+    reg Reset;
+
+    // Outputs from the module (wires)
+    wire hsync;
+    wire vsync;
+    wire [11:0] rgb;
+    wire winState;
+
+    // Instantiate your top module (gameLogic)
+    gameLogic uut (
+        .clk(clk), 
+        .In(In), 
+        .Reset(Reset), 
+        .hsync(hsync), 
+        .vsync(vsync), 
+        .rgb(rgb), 
+        .winState(winState)
+    );
+
+    // Generate a 100MHz clock (Basys 3 clock speed)
+    always #5 clk = ~clk;
+
+    // Simulate gameplay
+    initial begin
+        // Initialize Inputs
+        clk = 0;
+        In = 9'b000000000;
+        Reset = 1;
+
+        // Wait 100 ns, then release reset
+        #100;
+        Reset = 0;
+        #100;
+
+        // Simulate Player 1 flipping Switch 0 (bottom right square)
+        In = 9'b000000001; 
+        #20; // Leave switch on for a moment
+        
+        // Simulate Player 1 turning Switch 0 back off
+        In = 9'b000000000;
+        #100;
+
+        // Simulate Player 2 flipping Switch 4 (center square)
+        In = 9'b000010000;
+        #20;
+        
+        // Simulate Player 2 turning Switch 4 back off
+        In = 9'b000000000;
+        #1000;
+
+        // End simulation
+        $finish;
+    end
+
+endmodule
